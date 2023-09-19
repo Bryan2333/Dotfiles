@@ -1,0 +1,668 @@
+#!/bin/bash
+
+#{{{ 不编译不必要的CPU模块
+scripts/config --disable CONFIG_CPU_SUP_INTEL
+scripts/config --disable CONFIG_CPU_SUP_HYGON
+scripts/config --disable CONFIG_CPU_SUP_CENTAUR
+scripts/config --disable CONFIG_CPU_SUP_ZHAOXIN
+#}}}
+
+#{{{ 不编译Intel CPU微码
+scripts/config --disable CONFIG_MICROCODE_INTEL
+#}}}
+
+#{{{ 不编译不必要的CPU频率调整模块
+scripts/config --disable CONFIG_X86_INTEL_PSTATE
+scripts/config --disable CONFIG_X86_PCC_CPUFREQ
+scripts/config --disable CONFIG_X86_POWERNOW_K8
+scripts/config --disable CONFIG_X86_SPEEDSTEP_CENTRINO
+scripts/config --disable CONFIG_X86_P4_CLOCKMOD
+#}}}
+
+#{{{ 调整ZSWAP参数
+scripts/config --enable CONFIG_ZSWAP_DEFAULT_ON
+scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
+scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+#}}}
+
+#{{{ 不编译NFC模块
+scripts/config --disable CONFIG_NFC
+#}}}
+
+#{{{ 不编译SCSI模块
+scripts/config --disable CONFIG_SCSI_MOD
+scripts/config --disable CONFIG_SCSI
+scripts/config --disable CONFIG_SCSI_COMMON
+scripts/config --disable CONFIG_SCSI_DMA
+scripts/config --disable CONFIG_SCSI_NETLINK
+scripts/config --disable CONFIG_SCSI_PROC_FS
+#}}}
+
+#{{{ 不编译PATA硬盘模块
+scripts/config --disable CONFIG_PATA_ACPI
+scripts/config --disable CONFIG_PATA_LEGACY
+scripts/config --disable CONFIG_PATA_HPT366
+scripts/config --disable CONFIG_PATA_HPT37X
+scripts/config --disable CONFIG_PATA_HPT3X2N
+scripts/config --disable CONFIG_PATA_HPT3X3
+scripts/config --disable CONFIG_PATA_HPT3X3_DMA
+scripts/config --disable CONFIG_PATA_IT8213
+scripts/config --disable CONFIG_PATA_IT821X
+scripts/config --disable CONFIG_PATA_JMICRON
+scripts/config --disable CONFIG_PATA_MARVELL
+scripts/config --disable CONFIG_PATA_NETCELL
+scripts/config --disable CONFIG_PATA_NINJA32
+scripts/config --disable CONFIG_PATA_NS87415
+scripts/config --disable CONFIG_PATA_OLDPIIX
+scripts/config --disable CONFIG_PATA_OPTIDMA
+scripts/config --disable CONFIG_PATA_PDC2027X
+scripts/config --disable CONFIG_PATA_PDC_OLD
+scripts/config --disable CONFIG_PATA_RADISYS
+scripts/config --disable CONFIG_PATA_RDC
+scripts/config --disable CONFIG_PATA_SCH
+scripts/config --disable CONFIG_PATA_SERVERWORKS
+scripts/config --disable CONFIG_PATA_SIL680
+scripts/config --disable CONFIG_PATA_SIS
+scripts/config --disable CONFIG_PATA_TOSHIBA
+scripts/config --disable CONFIG_PATA_TRIFLEX
+scripts/config --disable CONFIG_PATA_VIA
+scripts/config --disable CONFIG_PATA_WINBOND
+scripts/config --disable CONFIG_PATA_CMD640_PCI
+scripts/config --disable CONFIG_PATA_MPIIX
+scripts/config --disable CONFIG_PATA_NS87410
+scripts/config --disable CONFIG_PATA_OPTI
+scripts/config --disable CONFIG_PATA_PCMCIA
+scripts/config --disable CONFIG_PATA_RZ1000
+scripts/config --disable CONFIG_PATA_ALI
+scripts/config --disable CONFIG_PATA_AMD
+scripts/config --disable CONFIG_PATA_ARTOP
+scripts/config --disable CONFIG_PATA_ATIIXP
+scripts/config --disable CONFIG_PATA_ATP867X
+scripts/config --disable CONFIG_PATA_CMD64X
+scripts/config --disable CONFIG_PATA_CYPRESS
+scripts/config --disable CONFIG_PATA_EFAR
+scripts/config --disable CONFIG_PATA_PARPORT
+#}}}
+
+#{{{ 不编译AX.25模块
+scripts/config --disable CONFIG_AX25
+scripts/config --disable CONFIG_NETROM
+scripts/config --disable CONFIG_ROSE
+scripts/config --disable CONFIG_MKISS
+scripts/config --disable CONFIG_6PACK
+scripts/config --disable CONFIG_BPQETHER
+scripts/config --disable CONFIG_BAYCOM_SER_FDX
+scripts/config --disable CONFIG_BAYCOM_SER_HDX
+scripts/config --disable CONFIG_BAYCOM_PAR
+scripts/config --disable CONFIG_YAM
+#}}}
+
+#{{{ 不编译AGP模块
+scripts/config --disable CONFIG_AGP
+#}}}
+
+#{{{ 不编译不必要的GPU模块
+scripts/config --disable CONFIG_DRM_RADEON
+scripts/config --disable CONFIG_DRM_NOUVEAU
+scripts/config --disable CONFIG_DRM_I915
+scripts/config --disable CONFIG_DRM_AST
+scripts/config --disable CONFIG_DRM_GMA500
+scripts/config --disable CONFIG_DRM_MGAG200
+scripts/config --disable CONFIG_DRM_PANEL_AUO_A030JTN01
+scripts/config --disable CONFIG_DRM_PANEL_ORISETECH_OTA5601A
+scripts/config --disable CONFIG_DRM_PANEL_WIDECHIPS_WS2401
+#}}}
+
+#{{{ 不编译WWAN模块
+scripts/config --disable CONFIG_WWAN
+#}}}
+
+#{{{ 不编译触摸屏模块
+scripts/config --disable CONFIG_INPUT_TOUCHSCREEN
+#}}}
+
+#{{{ 不编译电视机模块
+scripts/config --disable CONFIG_MEDIA_TUNER
+scripts/config --disable CONFIG_MEDIA_DIGITAL_TV_SUPPORT
+scripts/config --disable CONFIG_MEDIA_ANALOG_TV_SUPPORT
+#}}}
+
+#{{{ 不编译TV Tuner模块
+scripts/config --disbale CONFIG_MEDIA_TUNER
+scripts/config --disable CONFIG_MEDIA_TUNER_E4000
+scripts/config --disable CONFIG_MEDIA_TUNER_FC0011
+scripts/config --disable CONFIG_MEDIA_TUNER_FC0012
+scripts/config --disable CONFIG_MEDIA_TUNER_FC0013
+scripts/config --disable CONFIG_MEDIA_TUNER_FC2580
+scripts/config --disable CONFIG_MEDIA_TUNER_IT913X
+scripts/config --disable CONFIG_MEDIA_TUNER_M88RS6000T
+scripts/config --disable CONFIG_MEDIA_TUNER_MAX2165
+scripts/config --disable CONFIG_MEDIA_TUNER_MC44S803
+scripts/config --disable CONFIG_MEDIA_TUNER_MSI001
+scripts/config --disable CONFIG_MEDIA_TUNER_MT2060
+scripts/config --disable CONFIG_MEDIA_TUNER_MT2063
+scripts/config --disable CONFIG_MEDIA_TUNER_MT20XX
+scripts/config --disable CONFIG_MEDIA_TUNER_MT2131
+scripts/config --disable CONFIG_MEDIA_TUNER_MT2266
+scripts/config --disable CONFIG_MEDIA_TUNER_MXL301RF
+scripts/config --disable CONFIG_MEDIA_TUNER_MXL5005S
+scripts/config --disable CONFIG_MEDIA_TUNER_MXL5007T
+scripts/config --disable CONFIG_MEDIA_TUNER_QM1D1B0004
+scripts/config --disable CONFIG_MEDIA_TUNER_QM1D1C0042
+scripts/config --disable CONFIG_MEDIA_TUNER_QT1010
+scripts/config --disable CONFIG_MEDIA_TUNER_R820T
+scripts/config --disable CONFIG_MEDIA_TUNER_SI2157
+scripts/config --disable CONFIG_MEDIA_TUNER_SIMPLE
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA18212
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA18218
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA18250
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA18271
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA827X
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA8290
+scripts/config --disable CONFIG_MEDIA_TUNER_TDA9887
+scripts/config --disable CONFIG_MEDIA_TUNER_TEA5761
+scripts/config --disable CONFIG_MEDIA_TUNER_TEA5767
+scripts/config --disable CONFIG_MEDIA_TUNER_TUA9001
+scripts/config --disable CONFIG_MEDIA_TUNER_XC2028
+scripts/config --disable CONFIG_MEDIA_TUNER_XC4000
+scripts/config --disable CONFIG_MEDIA_TUNER_XC5000
+#}}}
+
+#{{{ 不编译不必要的音频驱动
+scripts/config --disable CONFIG_SND_SOC_FSL_ASRC
+scripts/config --disable CONFIG_SND_SOC_FSL_SAI
+scripts/config --disable CONFIG_SND_SOC_FSL_MQS
+scripts/config --disable CONFIG_SND_SOC_FSL_AUDMIX
+scripts/config --disable CONFIG_SND_SOC_FSL_SSI
+scripts/config --disable CONFIG_SND_SOC_FSL_SPDIF
+scripts/config --disable CONFIG_SND_SOC_FSL_ESAI
+scripts/config --disable CONFIG_SND_SOC_FSL_MICFIL
+scripts/config --disable CONFIG_SND_SOC_FSL_EASRC
+scripts/config --disable CONFIG_SND_SOC_FSL_XCVR
+scripts/config --disable CONFIG_SND_SOC_FSL_UTILS
+scripts/config --disable CONFIG_SND_SOC_FSL_RPMSG
+scripts/config --disable CONFIG_SND_SOC_IMX_AUDMUX
+scripts/config --disable CONFIG_SND_SOC_INTEL_SST_TOPLEVEL
+scripts/config --disable CONFIG_SND_SOC_SOF_INTEL_TOPLEVEL
+scripts/config --disbale CONFIG_SND_SOC_INTEL_AVS
+#}}}
+
+#{{{ 不编译不必要的HID模块
+scripts/config --disable CONFIG_HID_APPLE
+scripts/config --disable CONFIG_HID_APPLEIR
+#}}}
+
+#{{{ 不编译MemoryStick模块
+scripts/config --disable CONFIG_MEMSTICK
+scripts/config --disable CONFIG_MEMSTICK_TIFM_MS
+scripts/config --disable CONFIG_MEMSTICK_JMICRON_38X
+scripts/config --disable CONFIG_MEMSTICK_R592
+scripts/config --disable CONFIG_MEMSTICK_REALTEK_PCI
+scripts/config --disable CONFIG_MEMSTICK_REALTEK_USB
+#}}}
+
+#{{{ 不编译1-Wire模块
+scripts/config --disable CONFIG_W1
+#}}}
+
+#{{{ 不编译Speakup console speech模块
+scripts/config --disable CONFIG_SPEAKUP
+#}}}
+
+#{{{ 不编译InfiniBand模块
+scripts/config --disable CONFIG_INFINIBAND
+#}}}
+
+#{{{ 不编译不必要的RTC模块
+scripts/config --disable CONFIG_RTC_DRV_88PM860X
+scripts/config --disable CONFIG_RTC_DRV_88PM80X
+scripts/config --disable CONFIG_RTC_DRV_ABB5ZES3
+scripts/config --disable CONFIG_RTC_DRV_ABEOZ9
+scripts/config --disable CONFIG_RTC_DRV_ABX80X
+scripts/config --disable CONFIG_RTC_DRV_DS1307
+scripts/config --disable CONFIG_RTC_DRV_DS1374
+scripts/config --disable CONFIG_RTC_DRV_DS1672
+scripts/config --disable CONFIG_RTC_DRV_LP8788
+scripts/config --disable CONFIG_RTC_DRV_MAX6900
+scripts/config --disable CONFIG_RTC_DRV_MAX8907
+scripts/config --disable CONFIG_RTC_DRV_MAX8925
+scripts/config --disable CONFIG_RTC_DRV_MAX8998
+scripts/config --disable CONFIG_RTC_DRV_MAX8997
+scripts/config --disable CONFIG_RTC_DRV_RS5C372
+scripts/config --disable CONFIG_RTC_DRV_ISL1208
+scripts/config --disable CONFIG_RTC_DRV_ISL12022
+scripts/config --disable CONFIG_RTC_DRV_X1205
+scripts/config --disable CONFIG_RTC_DRV_PCF8523
+scripts/config --disable CONFIG_RTC_DRV_PCF85063
+scripts/config --disable CONFIG_RTC_DRV_PCF85363
+scripts/config --disable CONFIG_RTC_DRV_PCF8563
+scripts/config --disable CONFIG_RTC_DRV_PCF8583
+scripts/config --disable CONFIG_RTC_DRV_M41T80
+scripts/config --disable CONFIG_RTC_DRV_BQ32K
+scripts/config --disable CONFIG_RTC_DRV_PALMAS
+scripts/config --disable CONFIG_RTC_DRV_TPS6586X
+scripts/config --disable CONFIG_RTC_DRV_TPS65910
+scripts/config --disable CONFIG_RTC_DRV_RC5T583
+scripts/config --disable CONFIG_RTC_DRV_S35390A
+scripts/config --disable CONFIG_RTC_DRV_FM3130
+scripts/config --disable CONFIG_RTC_DRV_RX8010
+scripts/config --disable CONFIG_RTC_DRV_RX8581
+scripts/config --disable CONFIG_RTC_DRV_RX8025
+scripts/config --disable CONFIG_RTC_DRV_EM3027
+scripts/config --disable CONFIG_RTC_DRV_RV3028
+scripts/config --disable CONFIG_RTC_DRV_RV3032
+scripts/config --disable CONFIG_RTC_DRV_RV8803
+scripts/config --disable CONFIG_RTC_DRV_SD3078
+scripts/config --disable CONFIG_RTC_DRV_M41T93
+scripts/config --disable CONFIG_RTC_DRV_M41T94
+scripts/config --disable CONFIG_RTC_DRV_DS1302
+scripts/config --disable CONFIG_RTC_DRV_DS1305
+scripts/config --disable CONFIG_RTC_DRV_DS1343
+scripts/config --disable CONFIG_RTC_DRV_DS1347
+scripts/config --disable CONFIG_RTC_DRV_DS1390
+scripts/config --disable CONFIG_RTC_DRV_MAX6916
+scripts/config --disable CONFIG_RTC_DRV_R9701
+scripts/config --disable CONFIG_RTC_DRV_RX4581
+scripts/config --disable CONFIG_RTC_DRV_RS5C348
+scripts/config --disable CONFIG_RTC_DRV_MAX6902
+scripts/config --disable CONFIG_RTC_DRV_PCF2123
+scripts/config --disable CONFIG_RTC_DRV_MCP795
+scripts/config --disable CONFIG_RTC_DRV_DS3232
+scripts/config --disable CONFIG_RTC_DRV_PCF2127
+scripts/config --disable CONFIG_RTC_DRV_RV3029C2
+scripts/config --disable CONFIG_RTC_DRV_RX6110
+scripts/config --disable CONFIG_RTC_DRV_DS1286
+scripts/config --disable CONFIG_RTC_DRV_DS1511
+scripts/config --disable CONFIG_RTC_DRV_DS1553
+scripts/config --disable CONFIG_RTC_DRV_DS1685_FAMILY
+scripts/config --disable CONFIG_RTC_DRV_DS1742
+scripts/config --disable CONFIG_RTC_DRV_DS2404
+scripts/config --disable CONFIG_RTC_DRV_DA9052
+scripts/config --disable CONFIG_RTC_DRV_DA9055
+scripts/config --disable CONFIG_RTC_DRV_DA9063
+scripts/config --disable CONFIG_RTC_DRV_STK17TA8
+scripts/config --disable CONFIG_RTC_DRV_M48T86
+scripts/config --disable CONFIG_RTC_DRV_M48T35
+scripts/config --disable CONFIG_RTC_DRV_M48T59
+scripts/config --disable CONFIG_RTC_DRV_MSM6242
+scripts/config --disable CONFIG_RTC_DRV_BQ4802
+scripts/config --disable CONFIG_RTC_DRV_RP5C01
+scripts/config --disable CONFIG_RTC_DRV_WM831X
+scripts/config --disable CONFIG_RTC_DRV_WM8350
+scripts/config --disable CONFIG_RTC_DRV_PCF50633
+#}}}
+
+#{{{ 不编译Hyper-V guest模块
+scripts/config --disable CONFIG_HYPERV
+#}}}
+
+#{{{ 不编译COMEDI模块
+scripts/config --disable CONFIG_COMEDI
+#}}}
+
+#{{{ 不编译火线模块
+scripts/config --disable CONFIG_FIREWIRE
+scripts/config --disable CONFIG_FIREWIRE_NOSY
+#}}}
+
+#{{{ 不编译RPMSG模块
+scripts/config --disable CONFIG_RPMSG
+scripts/config --disable CONFIG_RPMSG_CHAR
+scripts/config --disable CONFIG_RPMSG_CTRL
+scripts/config --disable CONFIG_RPMSG_NS
+scripts/config --disable CONFIG_RPMSG_QCOM_GLINK
+scripts/config --disable CONFIG_RPMSG_QCOM_GLINK_RPM
+scripts/config --disable CONFIG_RPMSG_VIRTIO
+#}}}
+
+#{{{ 不编译不必要的VME设备驱动
+scripts/config --disable CONFIG_X86_PLATFORM_DRIVERS_DELL
+scripts/config --disable CONFIG_X86_PLATFORM_DRIVERS_HP
+scripts/config --disable CONFIG_CHROME_PLATFORMS
+scripts/config --disable CONFIG_SURFACE_PLATFORMS
+scripts/config --disable CONFIG_MELLANOX_PLATFORM
+scripts/config --disable CONFIG_ASUS_LAPTOP
+scripts/config --disable CONFIG_ASUS_WIRELESS
+scripts/config --disable CONFIG_ASUS_WMI
+scripts/config --disable CONFIG_ASUS_NB_WMI
+scripts/config --disable CONFIG_ASUS_TF103C_DOCK
+scripts/config --disable CONFIG_FUJITSU_LAPTOP
+scripts/config --disable CONFIG_FUJITSU_TABLET
+scripts/config --disable CONFIG_GPD_POCKET_FAN
+scripts/config --disable CONFIG_ACERHDF
+scripts/config --disable CONFIG_ACER_WIRELESS
+scripts/config --disable CONFIG_ACER_WMI
+scripts/config --disable CONFIG_APPLE_GMUX
+scripts/config --disable CONFIG_NVIDIA_WMI_EC_BACKLIGHT
+scripts/config --disable CONFIG_XIAOMI_WMI
+scripts/config --disable CONFIG_GIGABYTE_WMI
+scripts/config --disable CONFIG_HUAWEI_WMI
+scripts/config --disable CONFIG_MXM_WMI
+scripts/config --disable CONFIG_EEEPC_LAPTOP
+scripts/config --disable CONFIG_EEEPC_WMI
+scripts/config --disable CONFIG_MERAKI_MX100
+scripts/config --disable CONFIG_ALIENWARE_WMI
+scripts/config --disable CONFIG_AMILO_RFKILL
+scripts/config --disable CONFIG_THINKPAD_ACPI
+scripts/config --disable CONFIG_INTEL_ATOMISP2_PDX86
+scripts/config --disable CONFIG_INTEL_ATOMISP2_LED
+scripts/config --disable CONFIG_INTEL_ATOMISP2_PM
+scripts/config --disable CONFIG_INTEL_SAR_INT1092
+scripts/config --disable CONFIG_INTEL_SKL_INT3472
+scripts/config --disable CONFIG_INTEL_PMC_CORE
+scripts/config --disable CONFIG_INTEL_PMT_CLASS
+scripts/config --disable CONFIG_INTEL_PMT_TELEMETRY
+scripts/config --disable CONFIG_INTEL_PMT_CRASHLOG
+scripts/config --disable CONFIG_NVSW_SN2201
+#}}}
+
+#{{{ 不编译Intel Uncore Frequency Control模块
+scripts/config --disable CONFIG_INTEL_UNCORE_FREQ_CONTROL
+#}}}
+
+#{{{ 不编译加速度传感器模块
+scripts/config --disable CONFIG_ADIS16201
+scripts/config --disable CONFIG_ADIS16209
+scripts/config --disable CONFIG_ADXL313
+scripts/config --disable CONFIG_ADXL313_I2C
+scripts/config --disable CONFIG_ADXL313_SPI
+scripts/config --disable CONFIG_ADXL355
+scripts/config --disable CONFIG_ADXL355_I2C
+scripts/config --disable CONFIG_ADXL355_SPI
+scripts/config --disable CONFIG_ADXL367
+scripts/config --disable CONFIG_ADXL367_SPI
+scripts/config --disable CONFIG_ADXL367_I2C
+scripts/config --disable CONFIG_ADXL372
+scripts/config --disable CONFIG_ADXL372_SPI
+scripts/config --disable CONFIG_ADXL372_I2C
+scripts/config --disable CONFIG_BMA220
+scripts/config --disable CONFIG_BMA400
+scripts/config --disable CONFIG_BMA400_I2C
+scripts/config --disable CONFIG_BMA400_SPI
+scripts/config --disable CONFIG_BMC150_ACCEL
+scripts/config --disable CONFIG_BMC150_ACCEL_I2C
+scripts/config --disable CONFIG_BMC150_ACCEL_SPI
+scripts/config --disable CONFIG_BMI088_ACCEL
+scripts/config --disable CONFIG_BMI088_ACCEL_SPI
+scripts/config --disable CONFIG_DA280
+scripts/config --disable CONFIG_DA311
+scripts/config --disable CONFIG_DMARD06
+scripts/config --disable CONFIG_DMARD09
+scripts/config --disable CONFIG_DMARD10
+scripts/config --disable CONFIG_FXLS8962AF
+scripts/config --disable CONFIG_FXLS8962AF_I2C
+scripts/config --disable CONFIG_FXLS8962AF_SPI
+scripts/config --disable CONFIG_HID_SENSOR_ACCEL_3D
+scripts/config --disable CONFIG_IIO_ST_ACCEL_3AXIS
+scripts/config --disable CONFIG_IIO_ST_ACCEL_I2C_3AXIS
+scripts/config --disable CONFIG_IIO_ST_ACCEL_SPI_3AXIS
+scripts/config --disable CONFIG_IIO_KX022A
+scripts/config --disable CONFIG_IIO_KX022A_SPI
+scripts/config --disable CONFIG_IIO_KX022A_I2C
+scripts/config --disable CONFIG_KXSD9
+scripts/config --disable CONFIG_KXSD9_SPI
+scripts/config --disable CONFIG_KXSD9_I2C
+scripts/config --disable CONFIG_KXCJK1013
+scripts/config --disable CONFIG_MC3230
+scripts/config --disable CONFIG_MMA7455
+scripts/config --disable CONFIG_MMA7455_I2C
+scripts/config --disable CONFIG_MMA7455_SPI
+scripts/config --disable CONFIG_MMA7660
+scripts/config --disable CONFIG_MMA8452
+scripts/config --disable CONFIG_MMA9551_CORE
+scripts/config --disable CONFIG_MMA9551
+scripts/config --disable CONFIG_MMA9553
+scripts/config --disable CONFIG_MSA311
+scripts/config --disable CONFIG_MXC4005
+scripts/config --disable CONFIG_MXC6255
+scripts/config --disable CONFIG_SCA3000
+scripts/config --disable CONFIG_SCA3300
+scripts/config --disable CONFIG_STK8312
+scripts/config --disable CONFIG_STK8BA50
+#}}}
+
+#{{{ 不编译化学传感器模块
+scripts/config --disable CONFIG_ATLAS_PH_SENSOR
+scripts/config --disable CONFIG_ATLAS_EZO_SENSOR
+scripts/config --disable CONFIG_BME680
+scripts/config --disable CONFIG_CCS811
+scripts/config --disable CONFIG_IAQCORE
+scripts/config --disable CONFIG_PMS7003
+scripts/config --disable CONFIG_SCD30_CORE
+scripts/config --disable CONFIG_SCD30_I2C
+scripts/config --disable CONFIG_SCD30_SERIAL
+scripts/config --disable CONFIG_SCD4X
+scripts/config --disable CONFIG_SENSIRION_SGP30
+scripts/config --disable CONFIG_SENSIRION_SGP40
+scripts/config --disable CONFIG_SPS30
+scripts/config --disable CONFIG_SPS30_I2C
+scripts/config --disable CONFIG_SPS30_SERIAL
+scripts/config --disable CONFIG_SENSEAIR_SUNRISE_CO2
+scripts/config --disable CONFIG_VZ89X
+scripts/config --disable CONFIG_SPS30
+#}}}
+
+#{{{ 不编译数模转换器模块
+scripts/config --disable CONFIG_AD5449
+scripts/config --disable CONFIG_AD5592R_BASE
+scripts/config --disable CONFIG_AD5592R
+scripts/config --disable CONFIG_AD5593R
+scripts/config --disable CONFIG_AD5504
+scripts/config --disable CONFIG_AD5624R_SPI
+scripts/config --disable CONFIG_LTC2688
+scripts/config --disable CONFIG_AD5686
+scripts/config --disable CONFIG_AD5686_SPI
+scripts/config --disable CONFIG_AD5696_I2C
+scripts/config --disable CONFIG_AD5755
+scripts/config --disable CONFIG_AD5758
+scripts/config --disable CONFIG_AD5761
+scripts/config --disable CONFIG_AD5764
+scripts/config --disable CONFIG_AD5766
+scripts/config --disable CONFIG_AD5770R
+scripts/config --disable CONFIG_AD5791
+scripts/config --disable CONFIG_AD7293
+scripts/config --disable CONFIG_AD7303
+scripts/config --disable CONFIG_AD8801
+scripts/config --disable CONFIG_CIO_DAC
+scripts/config --disable CONFIG_DPOT_DAC
+scripts/config --disable CONFIG_DS4424
+scripts/config --disable CONFIG_LTC1660
+scripts/config --disable CONFIG_LTC2632
+scripts/config --disable CONFIG_M62332
+scripts/config --disable CONFIG_MAX517
+scripts/config --disable CONFIG_MAX5522
+scripts/config --disable CONFIG_MAX5821
+scripts/config --disable CONFIG_MCP4725
+scripts/config --disable CONFIG_MCP4922
+scripts/config --disable CONFIG_TI_DAC082S085
+scripts/config --disable CONFIG_TI_DAC5571
+scripts/config --disable CONFIG_TI_DAC7311
+scripts/config --disable CONFIG_TI_DAC7612
+scripts/config --disable CONFIG_VF610_DAC
+#}}}
+
+#{{{ 不编译数字陀螺仪传感器模块
+scripts/config --disable CONFIG_ADIS16080
+scripts/config --disable CONFIG_ADIS16130
+scripts/config --disable CONFIG_ADIS16136
+scripts/config --disable CONFIG_ADIS16260
+scripts/config --disable CONFIG_ADXRS290
+scripts/config --disable CONFIG_ADXRS450
+scripts/config --disable CONFIG_BMG160
+scripts/config --disable CONFIG_BMG160_I2C
+scripts/config --disable CONFIG_BMG160_SPI
+scripts/config --disable CONFIG_FXAS21002C
+scripts/config --disable CONFIG_FXAS21002C_I2C
+scripts/config --disable CONFIG_FXAS21002C_SPI
+scripts/config --disable CONFIG_HID_SENSOR_GYRO_3D
+scripts/config --disable CONFIG_MPU3050
+scripts/config --disable CONFIG_MPU3050_I2C
+scripts/config --disable CONFIG_IIO_ST_GYRO_3AXIS
+scripts/config --disable CONFIG_IIO_ST_GYRO_I2C_3AXIS
+scripts/config --disable CONFIG_IIO_ST_GYRO_SPI_3AXIS
+scripts/config --disable CONFIG_ITG3200
+#}}}
+
+#{{{ 不编译心率检测器模块
+scripts/config --disable CONFIG_AFE4403
+scripts/config --disable CONFIG_AFE4404
+scripts/config --disable CONFIG_MAX30100
+scripts/config --disable CONFIG_MAX30102
+#}}}
+
+#{{{ 不编译湿度传感器模块
+scripts/config --disable CONFIG_AM2315
+scripts/config --disable CONFIG_DHT11
+scripts/config --disable CONFIG_HDC100X
+scripts/config --disable CONFIG_HDC2010
+scripts/config --disable CONFIG_HID_SENSOR_HUMIDITY
+scripts/config --disable CONFIG_HTS221
+scripts/config --disable CONFIG_HTU21
+scripts/config --disable CONFIG_SI7005
+scripts/config --disable CONFIG_SI7020
+#}}}
+
+#{{{ 不编译惯性测量器模块
+scripts/config --disable CONFIG_ADIS16400
+scripts/config --disable CONFIG_ADIS16460
+scripts/config --disable CONFIG_ADIS16475
+scripts/config --disable CONFIG_ADIS16480
+scripts/config --disable CONFIG_BMI160
+scripts/config --disable CONFIG_BMI160_I2C
+scripts/config --disable CONFIG_BMI160_SPI
+scripts/config --disable CONFIG_BOSCH_BNO055
+scripts/config --disable CONFIG_BOSCH_BNO055_SERIAL
+scripts/config --disable CONFIG_BOSCH_BNO055_I2C
+scripts/config --disable CONFIG_FXOS8700
+scripts/config --disable CONFIG_FXOS8700_I2C
+scripts/config --disable CONFIG_FXOS8700_SPI
+scripts/config --disable CONFIG_INV_ICM42600
+scripts/config --disable CONFIG_INV_ICM42600_I2C
+scripts/config --disable CONFIG_INV_ICM42600_SPI
+scripts/config --disable CONFIG_KMX61
+scripts/config --disable CONFIG_INV_MPU6050_IIO
+scripts/config --disable CONFIG_INV_MPU6050_I2C
+scripts/config --disable CONFIG_INV_MPU6050_SPI
+scripts/config --disable CONFIG_IIO_ST_LSM6DSX
+scripts/config --disable CONFIG_IIO_ST_LSM9DS0
+#}}}
+
+#{{{ 不编译磁力传感器模块
+scripts/config --disable CONFIG_AK8974
+scripts/config --disable CONFIG_AK8975
+scripts/config --disable CONFIG_AK09911
+scripts/config --disable CONFIG_BMC150_MAGN
+scripts/config --disable CONFIG_BMC150_MAGN_I2C
+scripts/config --disable CONFIG_BMC150_MAGN_SPI
+scripts/config --disable CONFIG_MAG3110
+scripts/config --disable CONFIG_MMC35240
+scripts/config --disable CONFIG_IIO_ST_MAGN_3AXIS
+scripts/config --disable CONFIG_IIO_ST_MAGN_I2C_3AXIS
+scripts/config --disable CONFIG_IIO_ST_MAGN_SPI_3AXIS
+scripts/config --disable CONFIG_SENSORS_HMC5843
+scripts/config --disable CONFIG_SENSORS_HMC5843_I2C
+scripts/config --disable CONFIG_SENSORS_HMC5843_SPI
+scripts/config --disable CONFIG_SENSORS_RM3100
+scripts/config --disable CONFIG_SENSORS_RM3100_I2C
+scripts/config --disable CONFIG_SENSORS_RM3100_SPI
+scripts/config --disable CONFIG_TI_TMAG5273
+scripts/config --disable CONFIG_YAMAHA_YAS530
+#}}}
+
+#{{{ 不编译数字电位计模块
+scripts/config --disable CONFIG_AD5110
+scripts/config --disable CONFIG_AD5272
+scripts/config --disable CONFIG_DS1803
+scripts/config --disable CONFIG_MAX5432
+scripts/config --disable CONFIG_MAX5481
+scripts/config --disable CONFIG_MAX5487
+scripts/config --disable CONFIG_MCP4018
+scripts/config --disable CONFIG_MCP4131
+scripts/config --disable CONFIG_MCP4531
+scripts/config --disable CONFIG_MCP41010
+scripts/config --disable CONFIG_TPL0102
+scripts/config --disable CONFIG_X9250
+#}}}
+
+#{{{ 不编译压力传感器模块
+scripts/config --disable CONFIG_ABP060MG
+scripts/config --disable CONFIG_BMP280
+scripts/config --disable CONFIG_DLHL60D
+scripts/config --disable CONFIG_DPS310
+scripts/config --disable CONFIG_HID_SENSOR_PRESS
+scripts/config --disable CONFIG_HP03
+scripts/config --disable CONFIG_ICP10100
+scripts/config --disable CONFIG_MPL115
+scripts/config --disable CONFIG_MPL115_I2C
+scripts/config --disable CONFIG_MPL115_SPI
+scripts/config --disable CONFIG_MPL3115
+scripts/config --disable CONFIG_MPRLS0025PA
+scripts/config --disable CONFIG_MS5611
+scripts/config --disable CONFIG_MS5637
+scripts/config --disable CONFIG_IIO_ST_PRESS
+scripts/config --disable CONFIG_T5403
+scripts/config --disable CONFIG_HP206C
+scripts/config --disable CONFIG_ZPA2326
+#}}}
+
+#{{{ 不编译距离传感器模块
+scripts/config --disable CONFIG_ISL29501
+scripts/config --disable CONFIG_LIDAR_LITE_V2
+scripts/config --disable CONFIG_MB1232
+scripts/config --disable CONFIG_PING
+scripts/config --disable CONFIG_RFD77402
+scripts/config --disable CONFIG_SRF04
+scripts/config --disable CONFIG_SX_COMMON
+scripts/config --disable CONFIG_SX9310
+scripts/config --disable CONFIG_SX9324
+scripts/config --disable CONFIG_SX9360
+scripts/config --disable CONFIG_SX9500
+scripts/config --disable CONFIG_SRF08
+scripts/config --disable CONFIG_VCNL3020
+scripts/config --disable CONFIG_VL53L0X_I2C
+#}}}
+
+#{{{ 不编译温度传感器模块
+scripts/config --disable CONFIG_IQS620AT_TEMP
+scripts/config --disable CONFIG_LTC2983
+scripts/config --disable CONFIG_MAXIM_THERMOCOUPLE
+scripts/config --disable CONFIG_MLX90614
+scripts/config --disable CONFIG_MLX90632
+scripts/config --disable CONFIG_TMP006
+scripts/config --disable CONFIG_TMP007
+scripts/config --disable CONFIG_TMP117
+scripts/config --disable CONFIG_TSYS01
+scripts/config --disable CONFIG_TSYS02D
+scripts/config --disable CONFIG_MAX30208
+scripts/config --disable CONFIG_MAX31856
+scripts/config --disable CONFIG_MAX31865
+#}}}
+
+#{{{ 不编译不必要的文件系统模块
+scripts/config --disable CONFIG_REISERFS_FS
+scripts/config --disable CONFIG_JFS_FS
+scripts/config --disable CONFIG_EROFS_FS
+scripts/config --disable CONFIG_UFS_FS
+scripts/config --disable CONFIG_HPFS_FS
+scripts/config --disable CONFIG_HFS_FS
+scripts/config --disable CONFIG_HFSPLUS_FS
+scripts/config --disable CONFIG_UBIFS_FS
+scripts/config --disable CONFIG_JFFS2_FS
+scripts/config --disable CONFIG_9P_FS
+scripts/config --disable CONFIG_AFS_FS
+scripts/config --disable CONFIG_ADFS_FS
+scripts/config --disable CONFIG_AFFS_FS
+scripts/config --disable CONFIG_ORANGEFS_FS
+scripts/config --disable CONFIG_CRAMFS
+scripts/config --disable CONFIG_BFS_FS
+scripts/config --disable CONFIG_BEFS_FS
+scripts/config --disable CONFIG_OMFS_FS
+scripts/config --disable CONFIG_QNX4FS_FS
+scripts/config --disable CONFIG_QNX6FS_FS
+#}}}
+
+#{{{ 调整eBPF参数
+scripts/config --enable CONFIG_KPROBE_EVENTS
+scripts/config --enable CONFIG_BPF_EVENTS
+#}}}
+

@@ -1,0 +1,21 @@
+{
+    "window.titleBarStyle": "custom",
+    "editor.fontSize": 24,
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'Hack Nerd Font Mono'",
+    "editor.linkedEditing": true,
+    "terminal.external.linuxExec": "kitty",
+    "terminal.integrated.fontSize": 18,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "editor.lineNumbers": "relative",
+    "vim.smartRelativeLine": true,
+    "files.autoSaveDelay": 2000,
+    "vim.useSystemClipboard": true,
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "editor.unicodeHighlight.includeComments": false
+}
