@@ -1,0 +1,42 @@
+# Completion for nexttrace (https://github.com/nxtrace/NTrace-core)
+
+set -l DATA_PROVIDER 'IP.SB IPInfo IPInsight IP-API.com Ip2region IPInfoLocal CHUNZHEN disable-geoip'
+set -l POW_PROVIDER 'api.leo.moe sakura'
+set -l DOT_SERVER 'dnssb aliyun dnspod google cloudflare'
+set -l LANGUAGE 'cn en'
+
+complete -c nexttrace -s h -l help -d "Print help information"
+complete -c nexttrace -s 4 -l ipv4 -d "Use IPv4 only"
+complete -c nexttrace -s 6 -l ipv6 -d "Use IPv6 only"
+complete -c nexttrace -s T -l tcp -d "Use TCP SYN for tracerouting. Default: 80"
+complete -c nexttrace -s U -l udp -d "Use UDP SYN for tracerouting. Default: 53"
+complete -c nexttrace -s F -l fast-trace -d "One-Key Fast Trace to China ISPs"
+complete -c nexttrace -s p -l port -d "Set the destination port to use. Default: 80(tcp) 53(udp)"
+complete -c nexttrace -s q -l queries -d "Set the number of probes per each hop. Default: 3"
+complete -c nexttrace -l parallel-requests -d "Set ParallelRequests number. Default: 18"
+complete -c nexttrace -s m -l max-hops -d "Set the max number of hops (max TTL to be reached). Default: 30"
+complete -c nexttrace -s d -l data-provider -a $DATA_PROVIDER -x -d "Choose IP Geograph Data Provider. Default: LeoMoeAPI"
+complete -c nexttrace -l pow-provider -a $POW_PROVIDER -x -d "Choose PoW Provider. Default: api.leo.moe"
+complete -c nexttrace -s n -l no-rdns -d "Do not resolve IP addresses to their domain names"
+complete -c nexttrace -s a -l always-rdns -d "Always resolve IP addresses to their domain names"
+complete -c nexttrace -s P -l route-path -d "Print traceroute hop path by ASN and location"
+complete -c nexttrace -s r -l report -d "output using report mode"
+complete -c nexttrace -l dn42 -d "DN42 Mode"
+complete -c nexttrace -s o -l output -d "Write trace result to file (RealTimePrinter ONLY)"
+complete -c nexttrace -s t -l table -d "Output trace results as table"
+complete -c nexttrace -l raw -d "An Output Easy to Parse"
+complete -c nexttrace -s j -l json -d "Output trace results as JSON"
+complete -c nexttrace -s c -l classic -d "Classic Output trace results like BestTrace"
+complete -c nexttrace -s f -l first -d "Start from the first_ttl hop. Default: 1"
+complete -c nexttrace -s M -l map -d "Disable Print Trace Map"
+complete -c nexttrace -s e -l disable-mpls -d "Disable MPLS"
+complete -c nexttrace -s v -l version -d "Print version info and exit"
+complete -c nexttrace -s s -l source -d "Use source src_addr for outgoing packets"
+complete -c nexttrace -s D -l dev -a "$(ls /sys/class/net/)" -x -d "Use the following Network Devices as the source address in outgoing packets"
+complete -c nexttrace -s z -l send-time -d "Set how many [milliseconds] between sending each packet. Default: 100"
+complete -c nexttrace -s i -l ttl-time -d "Set how many [milliseconds] between sending packets groups by TTL. Default: 500"
+complete -c nexttrace -l timeout -d "The number of [milliseconds] to keep probe sockets open before giving up on the connection. Default: 1000"
+complete -c nexttrace -l psize -d "Set the packet size (payload size). Default: 52"
+complete -c nexttrace -l dot-server -a $DOT_SERVER -x -d "Use DoT Server for DNS Parse"
+complete -c nexttrace -s g -l language -a $LANGUAGE -x -d "Choose the language for displaying. Default: cn"
+complete -c nexttrace -l file -d "Read IP Address or domain name from file"

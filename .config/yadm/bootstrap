@@ -1,0 +1,82 @@
+#!/bin/sh
+
+__msg_blue() {
+    printf "%s==>%s %s%s\n" "${blue}" "${bold}" "$1" "${all_off}"
+}
+
+__note() {
+    printf "%s==>%s note:%s %s%s\n" "${blue}" "${yellow}" "${bold}" "$1" "${all_off}"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_DATA_HOME="$HOME/.local/share"
+GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+__note "Updating the yadm repo origin URL"
+yadm remote set-url origin "git@github.com:Bryan2333/Dotfiles.git"
+
+if ! [ -d "$XDG_CACHE_HOME" ]
+then
+    __note "Creating ~/.cache directory"
+    mkdir -p "$XDG_CACHE_HOME"
+    chattr +C "$XDG_CACHE_HOME"
+fi
+
+if ! [ -d "$GNUPGHOME" ]
+then
+    __note "Creating GNUPGHOME directory"
+    mkdir -p "$GNUPGHOME"
+    chmod 700 "$GNUPGHOME"
+fi
+
+if ! [ -f "$XDG_CONFIG_HOME/user-dirs.dirs" ]
+then
+    __note "Creating XDG user directories"
+    env LANG="en_US.UTF-8" xdg-user-dirs-update
+    chattr +C "$HOME/Downloads"
+fi
+
+if command -v fish > /dev/null 2>&1
+then
+    __note "Bootstraping Fish Shell"
+    fish -i -c "set -U fish_greeting ''"
+    fish -i -c "fish_config prompt choose terlar && yes | fish_config prompt save"
+    fish -i -c "fisher install (cat $XDG_CONFIG_HOME/fish/fish_plugins)"
+fi
+
+if command -v nvim > /dev/null 2>&1
+then
+    __note "Bootstraping Neovim"
+    nvim --headless "+Lazy! sync" +qa
+fi
+
+if command -v mpv > /dev/null 2>&1
+then
+    __note "Bootstraping mpv player"
+    wget -P "$XDG_CONFIG_HOME/mpv/scripts" https://github.com/cyl0/ModernX/raw/main/modernx.lua
+    wget -P "$XDG_CONFIG_HOME/mpv/scripts" https://github.com/po5/thumbfast/raw/master/thumbfast.lua
+    wget -P "$XDG_CONFIG_HOME/mpv/fonts" https://github.com/cyl0/ModernX/raw/main/Material-Design-Iconic-Font.ttf
+fi
+
+if command -v kitty > /dev/null 2>&1
+then
+    __note "Bootstraping Kitty terminal"
+    git clone https://github.com/trygveaa/kitty-kitten-search
+    find kitty-kitten-search/ -type f -name "*.py" -exec mv {} "$XDG_CONFIG_HOME/kitty" \;
+    rm -rf kitty-kitten-search/
+fi
+
+if [ -f "$HOME/.bash_profile" ] && [ -f "$HOME/.bashrc" ]
+then
+    __note "Recovering Bash Config Files"
+    yadm restore "$HOME/.bash_profile"
+    yadm restore "$HOME/.bashrc"
+fi
+
+__note "Please source ~/.bash_profile manually"

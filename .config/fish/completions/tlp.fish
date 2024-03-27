@@ -1,0 +1,15 @@
+# Fish shell completion for tlp (https://github.com/linrunner/TLP)
+
+complete -c tlp -x -n __fish_use_subcommand -a start -d "Start tlp and apply power saving profile for the actual power source"
+complete -c tlp -x -n __fish_use_subcommand -a bat -d "Apply battery profile and enter manual mode"
+complete -c tlp -x -n __fish_use_subcommand -a true -d "Alias for bat"
+complete -c tlp -x -n __fish_use_subcommand -a ac -d "Apply AC profile and enter manual mode"
+complete -c tlp -x -n __fish_use_subcommand -a false -d "Alias for ac"
+complete -c tlp -x -n __fish_use_subcommand -a usb -d "Enable  autosuspend for all USB devices except those excluded by default or via configuration"
+complete -c tlp -x -n __fish_use_subcommand -a bayoff -d "Turn off optical drive in UltraBay/MediaBay"
+complete -c tlp -x -n __fish_use_subcommand -a fullcharge -d "Charge battery to full capacity"
+complete -c tlp -x -n __fish_use_subcommand -a chargeonce -d "Charge  battery  to the stop charge threshold once (Thinkpad Only)"
+complete -c tlp -x -n __fish_use_subcommand -a diskid -d "Show disk ids for configured drives"
+complete -c tlp -x -n __fish_use_subcommand -a discharge -d "Force a complete discharge of the battery while on AC power (Thinkpad Only)"
+complete -c tlp -x -n __fish_use_subcommand -a recalibrate -d "Perform a battery recalibration while on AC power (Thinkpad Only)"
+complete -c tlp -x -n "__fish_seen_subcommand_from fullcharge chargeonce discharge recalibrate" -a "(ls /sys/class/power_supply | grep BAT)"
