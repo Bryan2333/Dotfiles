@@ -1,0 +1,24 @@
+# C语言配置
+If:
+  PathMatch: [.*\.c]
+CompileFlags:
+  Add:
+    - "-std=gnu17"
+    - "-Wall"
+  Compiler: gcc
+---
+If:
+  PathMatch: [.*\.h]
+CompileFlags:
+  Add:
+    - "Wall"
+  Compiler: gcc
+---
+# C++配置
+If:
+  PathExclude: [.*\.c, .*\.h]
+CompileFlags:
+  Add:
+    - "-std=c++20"
+    - "-Wall"
+  Compiler: g++

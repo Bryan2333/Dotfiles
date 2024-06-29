@@ -1,0 +1,89 @@
+#!/usr/bin/env fish
+
+set all_off $(tput sgr0)
+set bold $all_off$(tput bold)
+set blue $bold$(tput setaf 4)
+set yellow $bold$(tput setaf 3)
+
+set XDG_CACHE_HOME  $HOME/.cache
+set XDG_CONFIG_HOME $HOME/.config
+set XDG_DATA_HOME   $HOME/.local/share
+set GNUPGHOME       $XDG_DATA_HOME/gnupg
+
+function __msg_blue
+    printf "%s==>%s %s%s\n" $blue $bold $argv[1] $all_off
+end
+
+function __note
+    printf "%s==>%s note:%s %s%s\n" $blue $yellow $bold $argv[1] $all_off
+end
+
+function change_git_url
+    __note "Updating the yadm repo origin URL"
+    yadm remote set-url origin "git@github.com:Bryan2333/Dotfiles.git"
+end
+
+function create_cache_dir
+    if ! test -d $XDG_CACHE_HOME
+        __note "Creating ~/.cache directory"
+        mkdir -p $XDG_CACHE_HOME
+        chattr +C $XDG_CACHE_HOME
+    end
+end
+
+function create_gnupghome
+    if ! test -d $GNUPGHOME
+        __note "Creating GNUPGHOME directory"
+        install -dm700 $GNUPGHOME
+    end
+end
+
+function create_user_dir
+    if ! test -f $XDG_CONFIG_HOME/user-dirs.dirs
+        __note "Creating user directories"
+        env LANG="en_US.UTF-8" xdg-user-dirs-update
+        chattr +C $HOME/Downloads
+    end
+end
+
+function bootstrap_fish
+    if type -q fish
+        __note "Bootstraping Fish Shell"
+        fish -i -c "set -U fish_greeting ''"
+        fish -i -c "fisher install (cat $XDG_CONFIG_HOME/fish/fish_plugins)"
+    end
+end
+
+function bootstrap_neovim
+    if type -q nvim
+        __note "Bootstraping Neovim"
+        nvim --headless "+Lazy! sync" +qa
+    end
+end
+
+function bootstrap_mpv
+    if type -q mpv
+        __note "Bootstraping mpv player"
+        wget -P $XDG_CONFIG_HOME/mpv/scripts https://github.com/cyl0/ModernX/raw/main/modernx.lua
+        wget -P $XDG_CONFIG_HOME/mpv/scripts https://github.com/po5/thumbfast/raw/master/thumbfast.lua
+        wget -P $XDG_CONFIG_HOME/mpv/fonts https://github.com/cyl0/ModernX/raw/main/Material-Design-Iconic-Font.ttf
+    end
+end
+
+function restore_bash
+    if test -f $HOME/.bashrc
+        __note "Recovering Bash Config Files"
+        yadm restore $HOME/.bashrc
+    end
+end
+
+change_git_url
+create_cache_dir
+create_gnupghome
+create_user_dir
+bootstrap_fish
+bootstrap_neovim
+bootstrap_mpv
+restore_bash
+
+__note "Please source ~/.bash_profile manually"
