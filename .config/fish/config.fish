@@ -77,8 +77,6 @@ if status is-interactive
     # }}}
 
     # alias {{{
-    alias code 'codium'
-
     function chroot-build
         if ! test -f PKGBUILD
             echo "找不到PKGBUILD"
