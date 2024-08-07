@@ -49,11 +49,6 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 ## Vulkan解码
 export RADV_PERFTEST="video_decode"
 
-## JBR路径
-export IDEA_JDK="$XDG_DATA_HOME/jdks/jbr-17.0.11"
-export RIDER_JDK="$IDEA_JDK"
-export WEBIDE_JDK="$IDEA_JDK"
-
 ## 默认编辑器
 export EDITOR=nvim
 export VISUAL="$EDITOR"
