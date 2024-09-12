@@ -82,4 +82,10 @@ if status is-interactive
 
     abbr -a chroot-update 'arch-nspawn $CHROOT/root pacman -Syu'
     # }}}
+
+    # key bindings {{{
+
+    ## ctrl+right arrow防止abbr展开
+    bind -M insert \e\[1\;3C "commandline -i ' '"
+    # }}}
 end
