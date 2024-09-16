@@ -42,7 +42,7 @@ function pkgstatus
     end
 
     # 缓存路径
-    set LOCALREPO_DIR $HOME/AUR/pkgs
+    set LOCALREPO_DIR $HOME/AUR/pkgs/
     set PACMAN_CACHE_DIR /var/cache/pacman/pkg
 
     set PACMAN_VERSION (string match -r "Pacman v\d.+ - libalpm v\d.+" (pacman -V))
