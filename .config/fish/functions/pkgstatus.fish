@@ -22,7 +22,7 @@ function pkgstatus
         printf "%.2f GiB" (math $total_size / 2^30)
     end
 
-    function __proper_unite
+    function __proper_unit
         set KiB 1024
         set MiB 1048576
         set GiB 1073741824
@@ -51,10 +51,10 @@ function pkgstatus
     set TOTAL_PACKAGE_EXPLICITY (count (pacman -Qqe))
     set TOTAL_PACKAGE_AUR (count (pacman -Qqm))
     set TOTAL_PACKAGE_SIZE (__cal_total_package_size)
-    set PACMAN_CACHE_SIZE (__proper_unite (string match -r "^\d+" (du -b $PACMAN_CACHE_DIR)))
+    set PACMAN_CACHE_SIZE (__proper_unit (string match -r "^\d+" (du -b $PACMAN_CACHE_DIR)))
     set PIKAUR_CACHE_SIZE 0
     if test -d $LOCALREPO_DIR
-        set PIKAUR_CACHE_SIZE (__proper_unite (string match -r "^\d+" (du -b $LOCALREPO_DIR)))
+        set PIKAUR_CACHE_SIZE (__proper_unit (string match -r "^\d+" (du -b $LOCALREPO_DIR)))
     end
     set TOP10_PACKAGES (expac -S -H M -Q '%m %n' (pacman -Qq) | sort -rh | head -n 10)
 
